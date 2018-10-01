@@ -2,11 +2,11 @@
 # Predict the Presence of West-Nile Virus Mosquitos
 ### by The MossKeyToes
 
-   Lorem ipsum
+   We are seeking to reducing the presence of Pupilae and Restuans mosquitos from the city of Chicago via larvicide in fewer strategic locations based on a logistic regression model using the data provided by the city. We will be using the AUC as the primary metric for success, noting that the data is dependent on time.
 
 ### Executive Summary:
 #### The Opening
-   Lorem ipsum.
+   West Nile Virus continues to be a problem in the United States since it’s first report in 1999.  By the end of 2002, Illinois had counted 884 cases and 67 deaths.  During 2017, Illinois counties (63) reported WNV positive cases, including 90 human cases, and 8 deaths.
 #### The Need   
    Lorem ipsum.
    
@@ -89,7 +89,7 @@ r) .
 
 #### Conclusion
 
-   Lorem ipsum.
+   Using the interpolated, partial dataset, we were able to ____. However, this model will not be applicable to any predictions outside of these specific circumstances due to the _wonky_ nature of training data. With better funding and access to the full dataset, we will be able to create a more complete predictor model..
    
 
 
