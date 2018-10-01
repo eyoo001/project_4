@@ -1,9 +1,12 @@
 # Predict the Presence of West-Nile Virus Mosquitos
+### by The MossKeyToes
+
+   We are seeking to reducing the presence of Pupilae and Restuans mosquitos from the city of Chicago via larvicide in fewer strategic locations based on a logistic regression model using the data provided by the city. We will be using the AUC as the primary metric for success, noting that the data is dependent on time.
 
 ### Executive Summary:
 #### The Opening
-   This collection of notebooks details our process in submitting to the expired kaggle created by the Chicago Department of Health (found [here](https://www.kaggle.com/c/predict-west-nile-virus)).  **Note that the logistic regression model is discussed first and contains most of the discussion**, though both notebooks are fairly self-contained aside from the small discussion of preprocessing the data.
-   
+   West Nile Virus continues to be a problem in the United States since it’s first report in 1999.  By the end of 2002, Illinois had counted 884 cases and 67 deaths.  During 2017, Illinois counties (63) reported WNV positive cases, including 90 human cases, and 8 deaths.
+
 #### The Need   
    The goal is to create a model that predicts the presence of West Nile Virus in traps located throughout Chicago for the even years between 2008 and 2014, using the odd years 2007 and 2013 as training data.  As with the competition, the metric of interest will be the ROC AUC.  A model that can catch a large proportion of actual cases of West Nile can assist in predicting locations for preemptive spraying or even implementing larvacide solutions.
    
@@ -45,4 +48,38 @@ Year feature usually exhibits no feature importance in trees, or carries a small
 
 #### Conclusion
 
+
    In the end, while none of the models were unable to definitively pick up on large scale trends in West Nile Presence on the order of years, the models were able to find other prominent features.  How well these models do is a bit qualitative at the moment - we can only cite whether scores agree between an internal holdout set and the kaggle test years, and how well these do relative to the leaderboard.  Whether the logistic regression could make a difference in decision making cannot be said without seriously considering the options available - it certainly would not help if the solution was to make minnow ponds across Chicago, since we would not be interested in the time of year nor weather conditions to make this decision, but perhaps the yearly movement of mosquitos, the very feature we cannot hope to predict with this data for every other year.  We have made some headway into making a competitive model, though it is not entirely ruled out that the score being the result of the given shifts is the result of a massive coincidence.  We would like to acknowledge the research efforts of our friends at [vanessa_carlton](https://git.generalassemb.ly/dstrodtman/project-4/tree/master/vanessa_carlton)(if you can see this), to whom we refer you for citation of information related to the shifted weather data.
+   
+
+
+
+# Appendix
+
+### Data-file Contents:
+
+
+#### CSV-type
+
+| Name | Description |
+| --- | --- |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+
+
+
+### Other-type
+
+| Name | Description |
+| --- | --- |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+| wnv | desc |
+
