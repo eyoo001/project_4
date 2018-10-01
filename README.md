@@ -1,4 +1,3 @@
-# project_4
 # Predict the Presence of West-Nile Virus Mosquitos
 ### by The MossKeyToes
 
@@ -7,89 +6,50 @@
 ### Executive Summary:
 #### The Opening
    West Nile Virus continues to be a problem in the United States since it’s first report in 1999.  By the end of 2002, Illinois had counted 884 cases and 67 deaths.  During 2017, Illinois counties (63) reported WNV positive cases, including 90 human cases, and 8 deaths.
+
 #### The Need   
-   Lorem ipsum.
+   The goal is to create a model that predicts the presence of West Nile Virus in traps located throughout Chicago for the even years between 2008 and 2014, using the odd years 2007 and 2013 as training data.  As with the competition, the metric of interest will be the ROC AUC.  A model that can catch a large proportion of actual cases of West Nile can assist in predicting locations for preemptive spraying or even implementing larvacide solutions.
+   
+   These notebooks serve primarily as a sketch in the modelling process; ultimately, we are oncerned with the problem of overfitting to data, since we have the opportunity to show our model all of the odd years, though we must finally test on years which the model has never seen.  Because of the format of this competition, the hope is that our model will detect features independent of yearly variation; however, it was the full intention of this project to seed the idea in our models that there is information to be gained by looking at the year.  In this naive train of thought, we circumvent the idea that we should be terribly worried about the time dependence, since our model takes it into account by definition (or at least this is the argument of the logistic regression, which attempts to express the probability of finding West Nile as some function $f = f(month, year, ...)).  Obviously, this could only capture variations on those given orders of time, and other methods are attempted in fitting the decision tree based models.
+   
+   In a more practical setting, more consideration should be given to when and where the model predicts West Nile given some probability threshold, correctly and incorrectly.  This is a small extension, and will be completed in the near future.
    
    
 ## Contents
 
 | Notebook | Description |
 | --- | --- |
-| 01 | Data Collection |
-| 02 | Preprocessing |
-| 03 | Modeling |
-| 04 | Model Evaluation |
+| 01 | [Exploratory Data Analysis](./Project4/Final/EDA/Project-4-EDA.ipynb)|
+| 02A | [Modeling and Submission (Logistic Regression)](./Project4/Final/Modeling/LogReg.ipynb)|
+| 02B | [Modeling (Decision Tree Based Models)](./Project4/Final/Modeling/CARTs.ipynb)|
 
-
-### Findings:
-#### Data Collection and Preprocessing
-a) .
-b) .
-c) .
-d) .
-#### Modeling
-e) .
-f) .
-g) .
-h) .
-i) .
-j) .
-k) . 
-#### Model Evaluation
-l) .
-m) .
-n) .
-o) .
-p) .
-q) .
-r) .
-
-
-### Research
-   Lorem ipsum.
 
 
 # Summary of Methodology and Results
 
 #### Cleaning and Exploration of Data
 
-   Lorem ipsum.
+   Light cleaning was necessary for the weather data.  When values were missing from either weather station, the value was taken from the other station.  While this decision defeats the purpose of differentiating between the weather stations, the hope was that this might account for outlier days with abnormal weather, which would be ignored if we simply tried to fill values forward, for instance.  There were only a few of these missing values to begin with, so the accuracy of our model could not have changed by much, no matter what our decision here.
 
 #### Pre-processing of Data in advance of Modeling
 
-   Lorem ipsum.
+   Each row of the training data was matched to the weather data nearer the local weather station, in an attempt to be slightly more accurate than simply taking the weather for station 1 (nearer the airport).  Rolling averages were found to hurt scores in general; this should be explored further, but at this time, any rolling measurements over the weather have been avoided.  Data is scaled according to column means and variances in the logistic regression model for regularization.
 
 #### Models Fit and Compared
 
-| Model | f1-score |
-| --- | --- |
-| Random Forests | 0.86 |
-| Extra Trees | 0.83 |
-| Gradient Boosting | 0.47 |
-| Logistic Regression | 0.89 |
+| Model | ROC AUC(internal train) |ROC AUC(internal test) | ROC AUC(kaggle test) |
+| --- | --- | --- |
+| Random Forests | 0.81 | 0.99 | 0.75 |
+| Extra Trees | 0.78 | 0.80 | 0.74 |
+| Gradient Boosting(best score from CV) | 0.99 | 0.71 | 0.72 |
+| Logistic Regression | 0.82 | 0.81 | 0.81 |
 
-#### Detailing the Two Classification Models using Logistic-Regression and Random-Forests
-
-| Log-Reg | f1-score |
-| --- | --- |
-| wnv-vector | 0.93 |
-
-
-
-| Random-forests | f1-score |
-| --- | --- |
-| wnv-vector | 0.81 |
-
-
-
-#### Statistical Metrics to Evaluate the Models
-
-   Lorem ipsum.
-
+Year feature usually exhibits no feature importance in trees, or carries a small weight in logistic regression.
 
 #### Conclusion
 
-   Using the interpolated, partial dataset, we were able to ____. However, this model will not be applicable to any predictions outside of these specific circumstances due to the _wonky_ nature of training data. With better funding and access to the full dataset, we will be able to create a more complete predictor model..
+
+   In the end, while none of the models were unable to definitively pick up on large scale trends in West Nile Presence on the order of years, the models were able to find other prominent features.  How well these models do is a bit qualitative at the moment - we can only cite whether scores agree between an internal holdout set and the kaggle test years, and how well these do relative to the leaderboard.  Whether the logistic regression could make a difference in decision making cannot be said without seriously considering the options available - it certainly would not help if the solution was to make minnow ponds across Chicago, since we would not be interested in the time of year nor weather conditions to make this decision, but perhaps the yearly movement of mosquitos, the very feature we cannot hope to predict with this data for every other year.  We have made some headway into making a competitive model, though it is not entirely ruled out that the score being the result of the given shifts is the result of a massive coincidence.  We would like to acknowledge the research efforts of our friends at [vanessa_carlton](https://git.generalassemb.ly/dstrodtman/project-4/tree/master/vanessa_carlton)(if you can see this), to whom we refer you for citation of information related to the shifted weather data.
    
 
 
@@ -122,3 +82,4 @@ r) .
 | wnv | desc |
 | wnv | desc |
 | wnv | desc |
+
