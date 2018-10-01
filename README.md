@@ -6,7 +6,7 @@
 
 ### Executive Summary:
 #### The Opening
-   Lorem ipsum.
+   West Nile Virus continues to be a problem in the United States since it’s first report in 1999.  By the end of 2002, Illinois had counted 884 cases and 67 deaths.  During 2017, Illinois counties (63) reported WNV positive cases, including 90 human cases, and 8 deaths.
 #### The Need   
    Lorem ipsum.
    
